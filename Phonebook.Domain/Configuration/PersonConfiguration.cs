@@ -14,7 +14,7 @@ namespace Assessment.Phonebook.Domain.Configuration
             builder.HasKey(e => e.Id);
             builder.Property(s => s.Name).HasMaxLength(250);
             builder.Property(s => s.Company).HasMaxLength(250);
-            builder.Property(s => s.Surname).HasMaxLength(250);
+            builder.Property(s => s.Surname).HasMaxLength(250); 
         }
     }
 }
