@@ -11,7 +11,6 @@ namespace Assessment.Phonebook.Services.MappingProfile
     {
         public MappingProfile()
         {
-            CreateMap<Person, PersonDto>();
             CreateMap<Person, GetPersonDTO>().ReverseMap();
             CreateMap<PersonDetail, PersonDetailDTO>().ReverseMap();
         }

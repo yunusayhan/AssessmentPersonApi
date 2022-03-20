@@ -1,9 +1,6 @@
 ﻿using Assessment.Phonebook.Services.DTO;
 using Assessment.Phonebook.Services.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Assessment.Phonebook.Api.Controllers
@@ -17,11 +14,13 @@ namespace Assessment.Phonebook.Api.Controllers
             _personServices = personServices;
         }
 
+        #region Person
+
         [HttpGet("{personId}")]
-        public async Task <IActionResult> GetPerson(int personId)
+        public async Task<IActionResult> GetPerson(int personId)
         {
             var response = await _personServices.GetPerson(new ItemDto { Id = personId });
-            if (response!=null)
+            if (response != null)
             {
                 return Ok(response);
 
@@ -37,8 +36,46 @@ namespace Assessment.Phonebook.Api.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeletePerson(int personId)
         {
-            await _personServices.DeletePerson(new ItemDto { Id = personId });
+           var response= await _personServices.DeletePerson(new ItemDto { Id = personId });
+            if (!response.Success)
+            {
+                return StatusCode(500, "Internal server error");
+            }
             return NoContent();
         }
+        #endregion
+
+        #region PersonDetail
+        [HttpGet("{personId}/details")]
+        public async Task<IActionResult> GetPersonDetail(int personId)
+        {
+            var response = await _personServices.GetPersonDetail(new ItemDto { Id = personId });
+            if (response != null)
+            {
+                return Ok(response);
+
+            }
+            return NotFound();
+        }
+        [HttpPost("detail")]
+        public async Task<IActionResult> CreatePersonDetail(PersonDetailDTO personDetailDto)
+        {
+            var response = await _personServices.CreatePersonDetail(personDetailDto);
+            return Created("", response);
+        }
+
+
+        [HttpDelete(("detail"))]
+        public async Task<IActionResult> DeletePersonDetail(int personDetailId)
+        {
+            var response = await _personServices.DeletePersonDetail(new ItemDto { Id = personDetailId });
+            if (!response.Success)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+            return NoContent();
+        }
+
+        #endregion
     }
 }
