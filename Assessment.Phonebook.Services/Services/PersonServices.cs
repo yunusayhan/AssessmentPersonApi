@@ -76,7 +76,7 @@ namespace Assessment.Phonebook.Services.Services
         public async Task<GetPersonDTO> GetPerson(ItemDto request)
         {
             var person = await _context.Persons.FirstOrDefaultAsync(person => person.Id == request.Id);
-            if (person != null)
+            if (person?.Id != null)
             {
                 var personDto = _mapper.Map<GetPersonDTO>(person);
                 return personDto;

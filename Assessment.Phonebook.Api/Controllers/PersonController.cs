@@ -36,11 +36,7 @@ namespace Assessment.Phonebook.Api.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeletePerson(int personId)
         {
-           var response= await _personServices.DeletePerson(new ItemDto { Id = personId });
-            if (!response.Success)
-            {
-                return StatusCode(500, "Internal server error");
-            }
+            await _personServices.DeletePerson(new ItemDto { Id = personId });
             return NoContent();
         }
         #endregion
@@ -69,10 +65,6 @@ namespace Assessment.Phonebook.Api.Controllers
         public async Task<IActionResult> DeletePersonDetail(int personDetailId)
         {
             var response = await _personServices.DeletePersonDetail(new ItemDto { Id = personDetailId });
-            if (!response.Success)
-            {
-                return StatusCode(500, "Internal server error");
-            }
             return NoContent();
         }
 
