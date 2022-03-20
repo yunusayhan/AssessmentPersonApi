@@ -10,5 +10,6 @@ namespace Assessment.Phonebook.Domain.Entity
         public string Surname { get;  set; }
         public string Company { get;  set; }
         public List<PersonDetail> PersonDetail{ get; set; }
+
     }
 }

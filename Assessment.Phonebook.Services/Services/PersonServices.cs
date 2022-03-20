@@ -24,12 +24,29 @@ namespace Assessment.Phonebook.Services.Services
         }
         public async Task<ResultModel> CreatePerson(PersonDto request)
         {
-            var person = new Person {
+            var person = new Person
+            {
                 Name = request.Name,
                 Surname = request.Surname,
                 Company = request.Company,
                 PersonDetail = new List<PersonDetail>()
             };
+            if (request.PersonDetails!=null)
+            {
+                foreach (var item in request.PersonDetails)
+                {
+                    PersonDetail personDetail = new PersonDetail
+                    {
+                        PhoneNumber = item.PhoneNumber,
+                        MailAddress = item.MailAddress,
+                        PersonId = item.PersonId,
+                        Location = item.Location,
+                      
+                    };
+                    person.PersonDetail.Add(personDetail);
+                }
+            }
+            
             await _context.Persons.AddAsync(person);
             await _context.SaveChangesAsync();
 
@@ -54,7 +71,7 @@ namespace Assessment.Phonebook.Services.Services
             var person = await _context.Persons.FirstOrDefaultAsync(person => person.Id == request.Id);
             if (person != null)
             {
-                var personDto= _mapper.Map<GetPersonDTO>(person); 
+                var personDto = _mapper.Map<GetPersonDTO>(person);
                 return personDto;
             }
             return null;

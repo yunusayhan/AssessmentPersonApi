@@ -29,7 +29,7 @@ namespace Assessment.Phonebook.Api.Controllers
             return NotFound();
         }
         [HttpPost]
-        public async Task<IActionResult> CreatePerson(PersonDto personDto)
+        public async Task<IActionResult> CreatePerson([FromBody] PersonDto personDto)
         {
             var response = await _personServices.CreatePerson(personDto);
             return Created("", response);
