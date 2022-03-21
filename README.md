@@ -1,6 +1,6 @@
 Assessment.Phonebook.Api
 
-Database olarak PostgreSQL kullanılmıştır.
+Database olarak PostgreSQL kullanılmıştır.<br>
 Assessment.Phonebook.Api üzerinden migration yapılmalıdır.
 Api request bilgileri aşağıdaki gibidir
 /api/persons/{personId} ilgili personelin bilgilerini döner.
