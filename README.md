@@ -1,7 +1,7 @@
 #  Assessment.Phonebook.Api
 
 Database olarak PostgreSQL kullanılmıştır.<br>
-Assessment.Phonebook.Api üzerinden migration yapılmalıdır.<br>
+#### Assessment.Phonebook.Api üzerinden migration yapılmalıdır.<br>
 Api request bilgileri aşağıdaki gibidir<br>
 /api/persons/{personId} ilgili personelin bilgilerini döner.<br>
 /api/persons yeni personel ekler.<br>
@@ -12,7 +12,7 @@ Api request bilgileri aşağıdaki gibidir<br>
 
 # Assessment.Report.API
 
-##  Assessment.Report.API üzerinden migration yapılmalıdır.
+####  Assessment.Report.API üzerinden migration yapılmalıdır.
 
 /api/Report bir rapor isteği oluşturur ve rabbitMQ publish edilir.<br>
 /api/Report/getall var olan raporların listesini döner. Rapor oluşturuldu ise Status=1 oluşturulmadı ise Status=0 döner.<br>
