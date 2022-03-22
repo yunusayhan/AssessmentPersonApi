@@ -24,7 +24,7 @@ namespace Assessment.Report.API.Controllers
             _rabbitMQPublisher = rabbitMQPublisher;
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> CreateReportExcel()
         {
             var fileName = $"report-excel-{Guid.NewGuid().ToString().Substring(1, 10)}";
@@ -46,7 +46,7 @@ namespace Assessment.Report.API.Controllers
             return Ok(reports);
         }
 
-        [HttpPost]
+        [HttpPost("upload")]
         public async Task<IActionResult> Upload(IFormFile file, int reportId)
         {
             if (file is not { Length: > 0 }) return BadRequest();
