@@ -60,7 +60,7 @@ namespace FileCreateWorkerService
             wb.SaveAs(ms);
             MultipartFormDataContent multipartFormDataContent = new();
             multipartFormDataContent.Add(new ByteArrayContent(ms.ToArray()), "file", Guid.NewGuid().ToString() + ".xlsx");
-            var baseUrl = "https://localhost:44341/api/report";
+            var baseUrl = "https://localhost:44341/api/report/upload";
             using (var httpClient = new HttpClient())
             {
                 HttpResponseMessage response = await httpClient.PostAsync($"{baseUrl}?reportId={excel.ReportId}", multipartFormDataContent);
